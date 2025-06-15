@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Delles/GraphHarness-Studio#readme",
   "devDependencies": {
     "@types/node": "^24.0.1",
+    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.5.2",
     "@vitest/ui": "^3.2.3",
     "c8": "^10.1.3",
@@ -52,11 +53,14 @@
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
+    "@reduxjs/toolkit": "^2.8.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "neo4j-driver": "^5.28.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.6.2",
     "winston": "^3.17.0",
     "zod": "^3.25.64"
   }
