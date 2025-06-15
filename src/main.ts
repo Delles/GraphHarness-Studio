@@ -29,6 +29,24 @@ app.whenReady().then(async () => {
   logger.info('Electron app is ready.');
   createWindow();
 
+  // --- Global Keyboard Shortcut Placeholders ---
+  // import { globalShortcut } from 'electron'; // Would be needed
+  // globalShortcut.register('CommandOrControl+S', () => {
+  //   // Example: Send IPC to renderer to trigger save action
+  //   // This assumes 'mainWindow' is accessible here or you have a way to get the focused window.
+  //   // For simplicity, let's assume 'mainWindow' is the one created by 'createWindow'.
+  //   // You might need to manage mainWindow instances more carefully in a multi-window app.
+  //   const focusedWindow = BrowserWindow.getFocusedWindow();
+  //   if (focusedWindow) {
+  //     // focusedWindow.webContents.send('global-shortcut-save');
+  //   }
+  //   logger.info('Placeholder: Global Ctrl+S pressed - would trigger save action in renderer.');
+  // });
+  // globalShortcut.register('CommandOrControl+O', () => {
+  //   logger.info('Placeholder: Global Ctrl+O pressed - would trigger open action.');
+  // });
+  // --- End Global Keyboard Shortcut Placeholders ---
+
   try {
     await graphService.getDriver(); // Initialize driver
     logger.info('Neo4j Driver initialized.');
@@ -83,3 +101,9 @@ app.on('window-all-closed', async function () {
     app.quit();
   }
 });
+
+// Placeholder for unregistering shortcuts
+// app.on('will-quit', () => {
+//   globalShortcut.unregisterAll();
+//   logger.info('Global shortcuts unregistered.');
+// });
