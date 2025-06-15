@@ -35,6 +35,45 @@ GraphHarness Studio delivers a data-first, variant-aware wire-harness CAD tool. 
 
 GraphHarness Studio is a desktop application. Detailed installation instructions and usage guides will be available upon the official release. The application is designed for wire-harness design engineers and will provide a seamless experience for creating and managing harness schematics.
 
+## Running the Project
+
+This section describes how to build and run the GraphHarness Studio application from the source code.
+
+### Building the Project
+
+To build the application, which includes compiling the TypeScript code for both the main process and the renderer, run the following command from the project root:
+
+```bash
+npm run build
+```
+This command typically bundles the code and prepares it for execution.
+
+### Running the Application
+
+There are a couple of ways to run the application:
+
+1.  **Development Mode:**
+    For a development environment with hot-reloading for the renderer (React UI):
+    ```bash
+    npm run dev
+    ```
+    This command usually starts a development server for the renderer and runs the Electron main process. Changes to the renderer code (typically in `src/renderer`) will automatically reload the UI. Changes to the main process code (in `src/main.ts` or other files under `src/`) will likely require you to stop and restart the `npm run dev` command.
+
+2.  **Production-like Mode (after building):**
+    After building the project using `npm run build`, you can start the application using:
+    ```bash
+    npm start
+    ```
+    This command runs the built version of the application.
+
+### Logging
+
+The application uses Winston for logging. Log files can be found in the `logs/` directory at the root of the project. The primary log file is:
+
+-   `logs/app.log`
+
+This file contains logs from both the main Electron process and can be helpful for debugging and tracking application behavior.
+
 ## Contributing
 
 Currently, GraphHarness Studio is developed by an internal team. If the project transitions to an open-source model in the future, detailed contribution guidelines will be provided.

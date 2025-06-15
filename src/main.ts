@@ -1,6 +1,9 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import * as graphService from './services/graph-service';
+import logger from './services/logger';
+
+logger.info('Application starting up...');
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -23,15 +26,16 @@ function createWindow() {
 }
 
 app.whenReady().then(async () => {
+  logger.info('Electron app is ready.');
   createWindow();
 
   try {
     await graphService.getDriver(); // Initialize driver
-    console.log('Neo4j Driver initialized.');
+    logger.info('Neo4j Driver initialized.');
     await graphService.createIndexes();
-    console.log('Neo4j indexes checked/created successfully.');
+    logger.info('Neo4j indexes checked/created successfully.');
   } catch (error) {
-    console.error('Failed to initialize graph service or create indexes:', error);
+    logger.error('Failed to initialize graph service or create indexes:', error);
     // Consider informing the user or quitting the app
   }
 
@@ -71,9 +75,11 @@ app.whenReady().then(async () => {
 });
 
 app.on('window-all-closed', async function () {
+  logger.info('All windows closed.');
   if (process.platform !== 'darwin') {
+    logger.info('Application quitting...');
     await graphService.closeDriver(); // Close Neo4j driver connection
-    console.log('Neo4j driver closed.');
+    logger.info('Neo4j driver closed.');
     app.quit();
   }
 });
