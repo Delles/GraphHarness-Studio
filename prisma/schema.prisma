@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Wire {
+  id        String @id @default(cuid())
+  wireId    String @unique // Corresponds to Neo4j wireId
+  name      String?
+  crossSectionalArea Float // Prisma uses Float for float types
+  color     String?
+  material  String?
+  length    Float
+  insulationMaterial String?
+  optionCode String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Connector {
+  id            String @id @default(cuid())
+  connectorId   String @unique // Corresponds to Neo4j connectorId
+  name          String?
+  type          String?
+  partNumber    String?
+  manufacturer  String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cavity {
+  id            String @id @default(cuid())
+  cavityId      String @unique // Corresponds to Neo4j cavityId
+  cavityNumber  String
+  connectorId   String // Foreign key placeholder to Connector.connectorId (not a Prisma relation yet)
+  material      String?
+  shape         String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Splice {
+  id        String @id @default(cuid())
+  spliceId  String @unique // Corresponds to Neo4j spliceId
+  type      String?
+  location  String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

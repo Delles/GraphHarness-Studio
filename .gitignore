@@ -118,3 +118,5 @@ dist/
 dist/renderer
 # Electron build output
 dist/main
+
+/src/generated/prisma

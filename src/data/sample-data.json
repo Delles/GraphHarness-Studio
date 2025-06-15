@@ -1,0 +1,49 @@
+{
+  "connectors": [
+    { "connectorId": "C001", "name": "Main ECU Connector", "type": "Plug", "partNumber": "776273-1", "manufacturer": "TE Connectivity" },
+    { "connectorId": "C002", "name": "Sensor Array Block", "type": "Socket", "partNumber": "880806-2", "manufacturer": "Molex" },
+    { "connectorId": "C003", "name": "Auxiliary Power Input", "type": "Header", "partNumber": "172168-1", "manufacturer": "TE Connectivity" }
+  ],
+  "cavities": [
+    { "cavityId": "Cav001", "cavityNumber": "1", "connectorId": "C001", "material": "Gold", "shape": "Rectangular" },
+    { "cavityId": "Cav002", "cavityNumber": "2", "connectorId": "C001", "material": "Tin", "shape": "Rectangular" },
+    { "cavityId": "Cav003", "cavityNumber": "3", "connectorId": "C001", "material": "Gold", "shape": "Rectangular" },
+    { "cavityId": "Cav004", "cavityNumber": "A1", "connectorId": "C002", "material": "Silver", "shape": "Round" },
+    { "cavityId": "Cav005", "cavityNumber": "A2", "connectorId": "C002", "material": "Silver", "shape": "Round" },
+    { "cavityId": "Cav006", "cavityNumber": "1", "connectorId": "C003", "material": "Tin", "shape": "Tab" }
+  ],
+  "wires": [
+    { "wireId": "W001", "name": "CAN_H_Main", "crossSectionalArea": 0.5, "color": "Red/White", "material": "Copper", "length": 1200.5, "insulationMaterial": "XLPE", "optionCode": "BASE" },
+    { "wireId": "W002", "name": "CAN_L_Main", "crossSectionalArea": 0.5, "color": "Blue/White", "material": "Copper", "length": 1200.0, "insulationMaterial": "XLPE", "optionCode": "BASE" },
+    { "wireId": "W003", "name": "SENSOR_SIG_1", "crossSectionalArea": 0.35, "color": "Green", "material": "Copper", "length": 850.0, "insulationMaterial": "PVC", "optionCode": "SENSOR_PACK_A" },
+    { "wireId": "W004", "name": "SENSOR_PWR_1", "crossSectionalArea": 0.75, "color": "Black", "material": "Copper", "length": 840.0, "insulationMaterial": "PVC", "optionCode": "SENSOR_PACK_A" },
+    { "wireId": "W005", "name": "AUX_PWR_IN", "crossSectionalArea": 2.0, "color": "Red", "material": "Copper", "length": 300.0, "insulationMaterial": "PVC", "optionCode": "BASE" },
+    { "wireId": "W006", "name": "GND_MAIN", "crossSectionalArea": 2.0, "color": "Black", "material": "Copper", "length": 250.0, "insulationMaterial": "PVC", "optionCode": "BASE" }
+  ],
+  "splices": [
+    { "spliceId": "S001", "type": "Ultrasonic", "location": "Engine Bay Splice Box" },
+    { "spliceId": "S002", "type": "Crimp", "location": "Cabin Harness Junction" }
+  ],
+  "relationships": {
+    "cavityToConnector": [
+      { "cavityId": "Cav001", "connectorId": "C001" },
+      { "cavityId": "Cav002", "connectorId": "C001" },
+      { "cavityId": "Cav003", "connectorId": "C001" },
+      { "cavityId": "Cav004", "connectorId": "C002" },
+      { "cavityId": "Cav005", "connectorId": "C002" },
+      { "cavityId": "Cav006", "connectorId": "C003" }
+    ],
+    "wireToCavity": [
+      { "wireId": "W001", "cavityId": "Cav001", "terminationType": "Crimp", "seal": "Seal P/N 123" },
+      { "wireId": "W002", "cavityId": "Cav002", "terminationType": "Crimp", "seal": "Seal P/N 123" },
+      { "wireId": "W003", "cavityId": "Cav004", "terminationType": "Solder" },
+      { "wireId": "W005", "cavityId": "Cav006", "terminationType": "Crimp" }
+    ],
+    "wireToSplice": [
+      { "wireId": "W004", "spliceId": "S001", "details": "Input leg for SENSOR_PWR_1" },
+      { "wireId": "W006", "spliceId": "S001", "details": "Main ground tap" },
+      { "wireId": "W001", "spliceId": "S002", "details": "CAN_H pass-through input" },
+      { "wireId": "W002", "spliceId": "S002", "details": "CAN_L pass-through input" }
+    ]
+  }
+}
