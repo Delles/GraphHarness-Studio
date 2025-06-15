@@ -1,0 +1,51 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "GraphHarness Studio delivers a data-first, variant-aware wire-harness CAD tool. Using Electron, React, and Neo4j, it provides engineers a synced table-and-canvas experience, instant rule validation, and industrial-grade exports—while strictly adhering to modern security and performance standards.",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "lint": "eslint src/**/*.ts",
+    "start": "electron .",
+    "dev": "vite",
+    "build:vite": "tsc && vite build",
+    "build:electron": "tsc -p tsconfig.json --outDir dist/main && cp src/preload.ts dist/main/preload.js",
+    "build": "npm run build:vite && npm run build:electron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delles/GraphHarness-Studio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Delles/GraphHarness-Studio/issues"
+  },
+  "homepage": "https://github.com/Delles/GraphHarness-Studio#readme",
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "@vitejs/plugin-react": "^4.5.2",
+    "electron": "^36.4.0",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
