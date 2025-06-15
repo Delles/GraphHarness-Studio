@@ -75,3 +75,22 @@ GraphHarness Studio is currently under active development. The project follows a
 - **Phase 9: Beta Launch** (Docs, tutorials, feedback)
 
 The Minimum Viable Product (MVP) is estimated to be completed in approximately 26 weeks. We are committed to delivering a high-quality, reliable tool for wire harness design engineers.
+
+## Environment Variables and Secrets
+
+This project uses `.env` files to manage environment-specific variables and secrets.
+
+1.  Create a file named `.env` in the root of the project.
+2.  Copy the contents of `.env.example` into your new `.env` file.
+3.  Replace the placeholder values in `.env` with your actual configuration values.
+
+**Important:** The `.env` file is listed in `.gitignore` and should **never** be committed to version control. It often contains sensitive information.
+
+### Security Checklist (Placeholder)
+
+Always handle secrets responsibly:
+- Do not hardcode secrets in your source code.
+- Use environment variables for all secrets and configurations that vary between environments.
+- Ensure your `.env` file (or any file containing actual secrets) is not tracked by Git.
+- Regularly review and rotate secrets as necessary.
+- For production builds, ensure secrets are injected securely through your deployment pipeline or environment configuration, not bundled with the application artifact if possible.
